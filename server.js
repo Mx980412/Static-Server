@@ -15,7 +15,7 @@ var server = http.createServer(function (request, response) {
   if (pathWithQuery.indexOf("?") >= 0) {
     queryString = pathWithQuery.substring(pathWithQuery.indexOf("?"));
   }
-  var path = parsedUrl.pathname;
+  var path = parsedUrl.pathname; //请求的路径
   var query = parsedUrl.query;
   var method = request.method;
 
@@ -24,11 +24,10 @@ var server = http.createServer(function (request, response) {
   console.log("有人发请求过来！路径（带查询参数）为：" + pathWithQuery);
 
   response.statusCode = 200;
-
   //默认首页
   const filePath = path === "/" ? "/index.html" : path;
   const index = filePath.lastIndexOf(".");
-  //suffix 是后缀
+  //suffix：后缀
   const suffix = filePath.substring(index);
   const fileTypes = {
     ".html": "text/html",
